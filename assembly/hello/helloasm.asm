@@ -16,6 +16,11 @@ SECTION .text
 global _start
 
 _start:
+	nop
+	inc eax
+	inc eax
+	dec eax
+	inc eax 
 	nop		; no-op 
 	mov eax, 4	; sys_write system call
 	mov ebx, 1	; std output
