@@ -56,10 +56,10 @@ PreBuild:
 ##
 $(IntermediateDirectory)/main$(ObjectSuffix): main.c $(IntermediateDirectory)/main$(DependSuffix)
 	@test -d ./Debug || mkdir -p ./Debug
-	$(CompilerName) $(SourceSwitch) "/home/seed/CMPE279/c/codelite/helloworldc/main.c" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
+	$(CompilerName) $(SourceSwitch) "/home/seed/CMPE279/codelite/helloworldc/main.c" $(CmpOptions) $(ObjectSwitch)$(IntermediateDirectory)/main$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main$(DependSuffix): main.c
 	@test -d ./Debug || mkdir -p ./Debug
-	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "/home/seed/CMPE279/c/codelite/helloworldc/main.c"
+	@$(CompilerName) $(CmpOptions) $(IncludePath) -MT$(IntermediateDirectory)/main$(ObjectSuffix) -MF$(IntermediateDirectory)/main$(DependSuffix) -MM "/home/seed/CMPE279/codelite/helloworldc/main.c"
 
 ##
 ## Clean
