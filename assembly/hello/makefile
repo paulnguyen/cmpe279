@@ -1,7 +1,7 @@
 all: helloasm simple
 
 clean:
-	rm *~ *.o helloasm simple
+	rm *~ *.o helloasm simple test
 
 helloasm: helloasm.o
 	ld -o helloasm helloasm.o
