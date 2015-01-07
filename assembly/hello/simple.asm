@@ -1,8 +1,6 @@
 
 SECTION .data
 
-SECTION .bss
-
 SECTION .text
 
 global _start
@@ -19,5 +17,5 @@ _start:
 	mov ebx, 0	; return code
 	int 80H		; exit
 
-
+SECTION .bss
       
