@@ -16,18 +16,13 @@ SECTION .text
 global _start
 
 _start:
-	nop
-	inc eax
-	inc eax
-	dec eax
-	inc eax 
-	nop		; no-op 
+	nop		 
 	mov eax, 4	; sys_write system call
 	mov ebx, 1	; std output
 	mov ecx, msg	; offset of msg
 	mov edx, len	; length of msg
 	int 80H		; invoke syscall
-
+	nop		 
 	mov eax, 1	; exit system call
 	mov ebx, 0	; return code
 	int 80H		; exit
