@@ -10,10 +10,10 @@ int main(int argc, char **argv)
 void A( int tmp )
 {
 	if ( tmp<2 )
-		B() ;
+		B(1,2) ;
 }
 
-void B() {
+void B(int a, int b) {
 	C() ;
 }
 
