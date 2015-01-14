@@ -1,6 +1,3 @@
-;
-; note register values for "ecx", "edx" and "eax" for instructions between tne nop's
-;
 
 SECTION .data
 
