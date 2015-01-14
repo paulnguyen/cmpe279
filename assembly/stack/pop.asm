@@ -16,7 +16,7 @@ _start:
 	          ; EBP, ESI and EDI...but NOT ESP!!!
 	pop cx    ; Pop the top 2 bytes from the stack into CX
 	pop esi   ; Pop the top 4 bytes from the stack into ESI
-	pop [ebx] ; Pop the top 4 bytes from the stack into memory at EBX
+	pop word [ebx] ; Pop the top 4 bytes from the stack into memory at EBX
 
 	nop
 

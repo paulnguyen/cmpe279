@@ -23,7 +23,7 @@ int main()
 	int *ptr_main = (int*)malloc(sizeof(int));
 	printf("Text Segment:\n");
 	printf("Address of main: %p\n", main);
-	printf("Address of afunc: %p\n",foo);
+	printf("Address of func foo: %p\n",foo);
 	printf("Stack Locations:\n");
 	foo();
 	printf("Data Segment:\n");

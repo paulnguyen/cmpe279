@@ -13,8 +13,8 @@ _start:
 	pushad     ; Push EAX, ECX, EDX, EBX, ESP, ESP, EBP, ESI, and EDI, all at once
 	push ax    ; Push the AX register
 	push eax   ; Push the EAX register
-	push [bx]  ; Push the word stored in memory at BX
-	push [edx] ; Push the doubleword in memory at EDX
+	push word [bx]  ; Push the word stored in memory at BX
+	push dword [edx] ; Push the doubleword in memory at EDX
 	push edi   ; Push the EDI register
 
 	nop
