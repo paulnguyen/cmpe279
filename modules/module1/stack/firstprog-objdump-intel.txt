@@ -1,5 +1,5 @@
 
-firstprog:     file format elf32-i386
+firstprog.out:     file format elf32-i386
 
 
 Disassembly of section .interp:
@@ -951,7 +951,7 @@ Disassembly of section .debug_info:
  16f:	04 01                	add    al,0x1
  171:	00 00                	add    BYTE PTR [eax],al
  173:	00 00                	add    BYTE PTR [eax],al
- 175:	01 8e 00 00 00 9f    	add    DWORD PTR [esi-0x61000000],ecx
+ 175:	01 8e 00 00 00 9a    	add    DWORD PTR [esi-0x66000000],ecx
  17b:	00 00                	add    BYTE PTR [eax],al
  17d:	00 c4                	add    ah,al
  17f:	83 04 08 fd          	add    DWORD PTR [eax+ecx*1],0xfffffffd
@@ -996,7 +996,7 @@ Disassembly of section .debug_info:
  1d5:	06                   	push   es
  1d6:	61                   	popa   
  1d7:	00 00                	add    BYTE PTR [eax],al
- 1d9:	00 05 01 9a 00 00    	add    BYTE PTR ds:0x9a01,al
+ 1d9:	00 05 01 c3 00 00    	add    BYTE PTR ds:0xc301,al
  1df:	00 01                	add    BYTE PTR [ecx],al
  1e1:	04 4f                	add    al,0x4f
  1e3:	00 00                	add    BYTE PTR [eax],al
@@ -1444,24 +1444,36 @@ Disassembly of section .debug_str:
   8e:	66 69 72 73 74 70    	imul   si,WORD PTR [edx+0x73],0x7074
   94:	72 6f                	jb     105 <_init-0x804818f>
   96:	67 2e 63 00          	addr16 arpl WORD PTR cs:[bx+si],ax
-  9a:	6d                   	ins    DWORD PTR es:[edi],dx
-  9b:	61                   	popa   
-  9c:	69 6e 00 2f 68 6f 6d 	imul   ebp,DWORD PTR [esi+0x0],0x6d6f682f
-  a3:	65                   	gs
+  9a:	2f                   	das    
+  9b:	68 6f 6d 65 2f       	push   0x2f656d6f
+  a0:	73 65                	jae    107 <_init-0x804818d>
+  a2:	65                   	gs
+  a3:	64                   	fs
   a4:	2f                   	das    
-  a5:	73 65                	jae    10c <_init-0x8048188>
-  a7:	65                   	gs
-  a8:	64                   	fs
-  a9:	2f                   	das    
-  aa:	43                   	inc    ebx
-  ab:	4d                   	dec    ebp
-  ac:	50                   	push   eax
-  ad:	45                   	inc    ebp
-  ae:	32 37                	xor    dh,BYTE PTR [edi]
-  b0:	39 2f                	cmp    DWORD PTR [edi],ebp
-  b2:	68 61 63 6b 69       	push   0x696b6361
-  b7:	6e                   	outs   dx,BYTE PTR ds:[esi]
-  b8:	67                   	addr16
+  a5:	43                   	inc    ebx
+  a6:	4d                   	dec    ebp
+  a7:	50                   	push   eax
+  a8:	45                   	inc    ebp
+  a9:	32 37                	xor    dh,BYTE PTR [edi]
+  ab:	39 2f                	cmp    DWORD PTR [edi],ebp
+  ad:	6d                   	ins    DWORD PTR es:[edi],dx
+  ae:	6f                   	outs   dx,DWORD PTR ds:[esi]
+  af:	64                   	fs
+  b0:	75 6c                	jne    11e <_init-0x8048176>
+  b2:	65                   	gs
+  b3:	73 2f                	jae    e4 <_init-0x80481b0>
+  b5:	6d                   	ins    DWORD PTR es:[edi],dx
+  b6:	6f                   	outs   dx,DWORD PTR ds:[esi]
+  b7:	64                   	fs
+  b8:	75 6c                	jne    126 <_init-0x804816e>
+  ba:	65 31 2f             	xor    DWORD PTR gs:[edi],ebp
+  bd:	73 74                	jae    133 <_init-0x8048161>
+  bf:	61                   	popa   
+  c0:	63 6b 00             	arpl   WORD PTR [ebx+0x0],bp
+  c3:	6d                   	ins    DWORD PTR es:[edi],dx
+  c4:	61                   	popa   
+  c5:	69                   	.byte 0x69
+  c6:	6e                   	outs   dx,BYTE PTR ds:[esi]
 	...
 
 Disassembly of section .debug_loc:

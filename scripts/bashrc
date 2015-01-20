@@ -1,0 +1,18 @@
+
+##
+## Shell Functions for CMPE279 Labs
+## (Append to ~/.bashrc)
+##
+
+function clean() {
+  rm *.o *.out
+}
+
+function assemble() {
+  nasm -f elf -g -F stabs $1.asm
+  ld -o $1.out $1.o
+}
+
+function compile() {
+  gcc -g $1.c -o $1.out 
+}
