@@ -6,7 +6,7 @@
 
 SECTION .data
 
-msg:	db	"Hello Assembly World!", 22
+msg:	db	"Hello Assembly World!", 10 
 len:	equ	$-msg
 
 SECTION .bss

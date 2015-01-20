@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+void A( int tmp ) ;
+void B( int a, int b ) ;
+void C( ) ;
+
 int main(int argc, char **argv)
 {
 	printf("hello world\n");
