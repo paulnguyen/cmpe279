@@ -1,0 +1,859 @@
+Argument required (target name).  Try `help target'
+
+Breakpoint 4, main () at firstprog.c:6
+
+(gdb) i r
+eax            0xbffff584	-1073744508
+ecx            0xbffff500	-1073744640
+edx            0x1	1
+ebx            0xb7fc9ff4	-1208180748
+esp            0xbffff4c0	0xbffff4c0
+ebp            0xbffff4e8	0xbffff4e8
+esi            0x8048410	134513680
+edi            0x8048310	134513424
+eip            0x80483d5	0x80483d5 <main+17>
+eflags         0x286	[ PF SF IF ]
+cs             0x73	115
+ss             0x7b	123
+ds             0x7b	123
+es             0x7b	123
+fs             0x0	0
+gs             0x33	51
+
+(gdb) i r
+eax            0xbffff584	-1073744508
+ecx            0xbffff500	-1073744640
+edx            0x1	1
+ebx            0xb7fc9ff4	-1208180748
+esp            0xbffff4c0	0xbffff4c0
+ebp            0xbffff4e8	0xbffff4e8
+esi            0x8048410	134513680
+edi            0x8048310	134513424
+eip            0x80483d5	0x80483d5 <main+17>
+eflags         0x286	[ PF SF IF ]
+cs             0x73	115
+ss             0x7b	123
+ds             0x7b	123
+es             0x7b	123
+fs             0x0	0
+gs             0x33	51
+
+(gdb) l
+1	#include <stdio.h>
+2
+3	int main()
+4	{
+5	  int i;
+6	  for(i=0; i < 10; i++)
+7	  {
+8	    printf("Hello World!\n");
+9	  }
+10	}
+
+(gdb) dis main
+(gdb) disass main
+Dump of assembler code for function main:
+0x080483c4 <main+0>:	lea    ecx,[esp+0x4]
+0x080483c8 <main+4>:	and    esp,0xfffffff0
+0x080483cb <main+7>:	push   DWORD PTR [ecx-0x4]
+0x080483ce <main+10>:	push   ebp
+0x080483cf <main+11>:	mov    ebp,esp
+0x080483d1 <main+13>:	push   ecx
+0x080483d2 <main+14>:	sub    esp,0x24
+0x080483d5 <main+17>:	mov    DWORD PTR [ebp-0x8],0x0
+0x080483dc <main+24>:	jmp    0x80483ee <main+42>
+0x080483de <main+26>:	mov    DWORD PTR [esp],0x80484c0
+0x080483e5 <main+33>:	call   0x80482f4 <puts@plt>
+0x080483ea <main+38>:	add    DWORD PTR [ebp-0x8],0x1
+0x080483ee <main+42>:	cmp    DWORD PTR [ebp-0x8],0x9
+0x080483f2 <main+46>:	jle    0x80483de <main+26>
+0x080483f4 <main+48>:	add    esp,0x24
+0x080483f7 <main+51>:	pop    ecx
+0x080483f8 <main+52>:	pop    ebp
+0x080483f9 <main+53>:	lea    esp,[ecx-0x4]
+0x080483fc <main+56>:	ret
+End of assembler dump.
+
+(gdb) disassemble main
+Dump of assembler code for function main:
+0x080483c4 <main+0>:	lea    ecx,[esp+0x4]
+0x080483c8 <main+4>:	and    esp,0xfffffff0
+0x080483cb <main+7>:	push   DWORD PTR [ecx-0x4]
+0x080483ce <main+10>:	push   ebp
+0x080483cf <main+11>:	mov    ebp,esp
+0x080483d1 <main+13>:	push   ecx
+0x080483d2 <main+14>:	sub    esp,0x24
+0x080483d5 <main+17>:	mov    DWORD PTR [ebp-0x8],0x0
+0x080483dc <main+24>:	jmp    0x80483ee <main+42>
+0x080483de <main+26>:	mov    DWORD PTR [esp],0x80484c0
+0x080483e5 <main+33>:	call   0x80482f4 <puts@plt>
+0x080483ea <main+38>:	add    DWORD PTR [ebp-0x8],0x1
+0x080483ee <main+42>:	cmp    DWORD PTR [ebp-0x8],0x9
+0x080483f2 <main+46>:	jle    0x80483de <main+26>
+0x080483f4 <main+48>:	add    esp,0x24
+0x080483f7 <main+51>:	pop    ecx
+0x080483f8 <main+52>:	pop    ebp
+0x080483f9 <main+53>:	lea    esp,[ecx-0x4]
+0x080483fc <main+56>:	ret
+End of assembler dump.
+
+(gdb) break main
+Note: breakpoint 4 also set at pc 0x80483d5.
+Breakpoint 5 at 0x80483d5: file firstprog.c, line 6.
+
+(gdb) run
+Error in re-setting breakpoint 3:
+Function "0x0804832c" not defined.
+Error in re-setting breakpoint 3:
+Function "0x0804832c" not defined.
+Error in re-setting breakpoint 3:
+Function "0x0804832c" not defined.
+
+Starting program: /home/seed/CMPE279/hacking/firstprog
+
+Breakpoint 4, main () at firstprog.c:6
+
+(gdb) i r eip
+eip            0x80483d5	0x80483d5 <main+17>
+
+(gdb) x/o 0x80483d5
+0x80483d5 <main+17>:	076042707
+
+(gdb) x/o eip
+Error: No symbol "eip" in current context.
+
+(gdb) x/o $eip
+0x80483d5 <main+17>:	076042707
+
+(gdb) x/o &eip
+Error: No symbol "eip" in current context.
+
+(gdb) x/x eip
+Error: No symbol "eip" in current context.
+
+(gdb) x/x $eip
+0x80483d5 <main+17>:	0x00f845c7
+
+(gdb) x/u $eip
+0x80483d5 <main+17>:	16270791
+
+(gdb) x/t $eip
+0x80483d5 <main+17>:	00000000111110000100010111000111
+
+(gdb) dprintf 4, "%d", i
+Error: Undefined command: "dprintf".  Try "help".
+
+(gdb) help
+List of classes of commands:
+
+aliases -- Aliases of other commands
+breakpoints -- Making program stop at certain points
+data -- Examining data
+files -- Specifying and examining files
+internals -- Maintenance commands
+obscure -- Obscure features
+running -- Running the program
+stack -- Examining the stack
+status -- Status inquiries
+support -- Support facilities
+tracepoints -- Tracing of program execution without stopping the program
+user-defined -- User-defined commands
+
+Type "help" followed by a class name for a list of commands in that class.
+Type "help all" for the list of all commands.
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+
+(gdb) help data
+Examining data.
+
+List of commands:
+
+append -- Append target code/data to a local file
+append binary -- Append target code/data to a raw binary file
+append binary memory -- Append contents of memory to a raw binary file
+append binary value -- Append the value of an expression to a raw binary file
+append memory -- Append contents of memory to a raw binary file
+append value -- Append the value of an expression to a raw binary file
+call -- Call a function in the program
+disassemble -- Disassemble a specified section of memory
+display -- Print value of expression EXP each time the program stops
+dump -- Dump target code/data to a local file
+dump binary -- Write target code/data to a raw binary file
+dump binary memory -- Write contents of memory to a raw binary file
+dump binary value -- Write the value of an expression to a raw binary file
+dump ihex -- Write target code/data to an intel hex file
+dump ihex memory -- Write contents of memory to an ihex file
+dump ihex value -- Write the value of an expression to an ihex file
+dump memory -- Write contents of memory to a raw binary file
+dump srec -- Write target code/data to an srec file
+dump srec memory -- Write contents of memory to an srec file
+dump srec value -- Write the value of an expression to an srec file
+dump tekhex -- Write target code/data to a tekhex file
+dump tekhex memory -- Write contents of memory to a tekhex file
+dump tekhex value -- Write the value of an expression to a tekhex file
+dump value -- Write the value of an expression to a raw binary file
+init-if-undefined -- Initialize a convenience variable if necessary
+inspect -- Same as "print" command
+mem -- Define attributes for memory region or reset memory region handling to
+output -- Like "print" but don't put in value history and don't print newline
+print -- Print value of expression EXP
+print-object -- Ask an Objective-C object to print itself
+printf -- Printf "printf format string"
+ptype -- Print definition of type TYPE
+restore -- Restore the contents of FILE to target memory
+set -- Evaluate expression EXP and assign result to variable VAR
+set annotate -- Set annotation_level
+set architecture -- Set architecture of target
+set args -- Set argument list to give program being debugged when it is started
+set auto-solib-add -- Set autoloading of shared library symbols
+set backtrace -- Set backtrace specific variables
+set backtrace limit -- Set an upper bound on the number of backtrace levels
+set backtrace past-entry -- Set whether backtraces should continue past the entry point of a program
+set backtrace past-main -- Set whether backtraces should continue past "main"
+set breakpoint -- Breakpoint specific settings
+set breakpoint auto-hw -- Set automatic usage of hardware breakpoints
+set breakpoint pending -- Set debugger's behavior regarding pending breakpoints
+set can-use-hw-watchpoints -- Set debugger's willingness to use watchpoint hardware
+set case-sensitive -- Set case sensitivity in name search
+set charset -- Set the host and target character sets
+set check -- Set the status of the type/range checker
+set check range -- Set range checking
+set check type -- Set type checking
+set coerce-float-to-double -- Set coercion of floats to doubles when calling functions
+set complaints -- Set max number of complaints about incorrect symbols
+set confirm -- Set whether to confirm potentially dangerous operations
+set cp-abi -- Set the ABI used for inspecting C++ objects
+set debug -- Generic command for setting gdb debugging flags
+set debug arch -- Set architecture debugging
+set debug event -- Set event debugging
+set debug expression -- Set expression debugging
+set debug frame -- Set frame debugging
+set debug infrun -- Set inferior debugging
+set debug lin-lwp -- Set debugging of GNU/Linux lwp module
+set debug observer -- Set observer debugging
+set debug overload -- Set debugging of C++ overloading
+set debug remote -- Set debugging of remote protocol
+set debug serial -- Set serial debugging
+set debug target -- Set target debugging
+set debug xml -- Set XML parser debugging
+set debug-file-directory -- Set the directory where separate debug symbols are searched for
+set debugvarobj -- Set varobj debugging
+set demangle-style -- Set the current C++ demangling style
+set detach-on-fork -- Set whether gdb will detach the child of a fork
+set disassembly-flavor -- Set the disassembly flavor
+set editing -- Set editing of command lines as they are typed
+set endian -- Set endianness of target
+set environment -- Set environment variable value to give the program
+set exec-done-display -- Set notification of completion for asynchronous execution commands
+set extension-language -- Set mapping between filename extension and source language
+set follow-fork-mode -- Set debugger response to a program call of fork or vfork
+set gnutarget -- (Set the current BFD target
+set height -- Set number of lines gdb thinks are in a page
+set history -- Generic command for setting command history parameters
+set history expansion -- Set history expansion on command input
+set history filename -- Set the filename in which to record the command history
+set history save -- Set saving of the history record on exit
+set history size -- Set the size of the command history
+set host-charset -- Set the host character set
+set inferior-tty -- Set terminal for future runs of program being debugged
+set input-radix -- Set default input radix for entering numbers
+set language -- Set the current source language
+set listsize -- Set number of source lines gdb will list by default
+set logging -- Set logging options
+set logging file -- Set the current logfile
+set logging off -- Disable logging
+set logging on -- Enable logging
+set logging overwrite -- Set whether logging overwrites or appends to the log file
+set logging redirect -- Set the logging output mode
+set max-user-call-depth -- Set the max call depth for user-defined commands
+set mem -- Memory regions settings
+set mem inaccessible-by-default -- Set handling of unknown memory regions
+set opaque-type-resolution -- Set resolution of opaque struct/class/union types (if set before loading symbols)
+set osabi -- Set OS ABI of target
+set output-radix -- Set default output radix for printing of values
+set overload-resolution -- Set overload resolution in evaluating C++ functions
+set pagination -- Set state of pagination
+set print -- Generic command for setting how things print
+set print address -- Set printing of addresses
+set print array -- Set prettyprinting of arrays
+set print array-indexes -- Set printing of array indexes
+set print asm-demangle -- Set demangling of C++/ObjC names in disassembly listings
+set print demangle -- Set demangling of encoded C++/ObjC names when displaying symbols
+set print elements -- Set limit on string chars or array elements to print
+set print max-symbolic-offset -- Set the largest offset that will be printed in <symbol+1234> form
+set print null-stop -- Set printing of char arrays to stop at first null char
+set print object -- Set printing of object's derived type based on vtable info
+set print pascal_static-members -- Set printing of pascal static members
+set print pretty -- Set prettyprinting of structures
+set print repeats -- Set threshold for repeated print elements
+set print sevenbit-strings -- Set printing of 8-bit characters in strings as \nnn
+set print static-members -- Set printing of C++ static members
+set print symbol-filename -- Set printing of source filename and line number with <symbol>
+set print union -- Set printing of unions interior to structures
+set print vtbl -- Set printing of C++ virtual function tables
+set prompt -- Set gdb's prompt
+set radix -- Set default input and output number radices
+set remote -- Remote protocol specific variables
+set remote P-packet -- Set use of remote protocol `P' (set-register) packet
+set remote X-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote Z-packet -- Set use of remote protocol `Z' packets
+set remote access-watchpoint-packet -- Set use of remote protocol `Z4' (access-watchpoint) packet
+set remote binary-download-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote fetch-register-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote get-thread-local-storage-address-packet -- Set use of remote protocol `qGetTLSAddr' (get-thread-local-storage-address) packet
+set remote hardware-breakpoint-limit -- Set the maximum number of target hardware breakpoints
+set remote hardware-breakpoint-packet -- Set use of remote protocol `Z1' (hardware-breakpoint) packet
+set remote hardware-watchpoint-limit -- Set the maximum number of target hardware watchpoints
+set remote library-info-packet -- Set use of remote protocol `qXfer:libraries:read' (library-info) packet
+set remote memory-map-packet -- Set use of remote protocol `qXfer:memory-map:read' (memory-map) packet
+set remote memory-read-packet-size -- Set the maximum number of bytes per memory-read packet
+set remote memory-write-packet-size -- Set the maximum number of bytes per memory-write packet
+set remote p-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote pass-signals-packet -- Set use of remote protocol `QPassSignals' (pass-signals) packet
+set remote read-aux-vector-packet -- Set use of remote protocol `qXfer:auxv:read' (read-aux-vector) packet
+set remote read-spu-object-packet -- Set use of remote protocol `qXfer:spu:read' (read-spu-object) packet
+set remote read-watchpoint-packet -- Set use of remote protocol `Z3' (read-watchpoint) packet
+set remote set-register-packet -- Set use of remote protocol `P' (set-register) packet
+set remote software-breakpoint-packet -- Set use of remote protocol `Z0' (software-breakpoint) packet
+set remote supported-packets-packet -- Set use of remote protocol `qSupported' (supported-packets) packet
+set remote symbol-lookup-packet -- Set use of remote protocol `qSymbol' (symbol-lookup) packet
+set remote system-call-allowed -- Set if the host system(3) call is allowed for the target
+set remote target-features-packet -- Set use of remote protocol `qXfer:features:read' (target-features) packet
+set remote verbose-resume-packet -- Set use of remote protocol `vCont' (verbose-resume) packet
+set remote write-spu-object-packet -- Set use of remote protocol `qXfer:spu:write' (write-spu-object) packet
+set remote write-watchpoint-packet -- Set use of remote protocol `Z2' (write-watchpoint) packet
+set remoteaddresssize -- Set the maximum size of the address (in bits) in a memory packet
+set remotebaud -- Set baud rate for remote serial I/O
+set remotebreak -- Set whether to send break if interrupted
+set remotecache -- Set cache use for remote targets
+set remoteflow -- Set use of hardware flow control for remote serial I/O
+set remotelogbase -- Set numerical base for remote session logging
+set remotelogfile -- Set filename for remote session recording
+set remotetimeout -- Set timeout limit to wait for target to respond
+set remotewritesize -- Set the maximum number of bytes per memory write packet (deprecated)
+set scheduler-locking -- Set mode for locking scheduler during execution
+set serial -- Set default serial/parallel port configuration
+set solib-absolute-prefix -- Set an alternate system root
+set solib-search-path -- Set the search path for loading non-absolute shared library symbol files
+set step-mode -- Set mode of the step operation
+set stop-on-solib-events -- Set stopping for shared library events
+set struct-convention -- Set the convention for returning small structs
+set substitute-path -- Usage: set substitute-path FROM TO
+set symbol-reloading -- Set dynamic symbol table reloading multiple times in one run
+set sysroot -- Set an alternate system root
+set target-charset -- Set the target character set
+set tdesc -- Set target description specific variables
+set tdesc filename -- Set the file to read for an XML target description
+set trace-commands -- Set tracing of GDB CLI commands
+set trust-readonly-sections -- Set mode for reading from readonly sections
+set tui -- TUI configuration variables
+set tui active-border-mode -- Set the attribute mode to use for the active TUI window border
+set tui border-kind -- Set the kind of border for TUI windows
+set tui border-mode -- Set the attribute mode to use for the TUI window borders
+set unwindonsignal -- Set unwinding of stack if a signal is received while in a call dummy
+set variable -- Evaluate expression EXP and assign result to variable VAR
+set verbose -- Set verbosity
+set watchdog -- Set watchdog timer
+set width -- Set number of characters gdb thinks are in a line
+set write -- Set writing into executable and core files
+undisplay -- Cancel some expressions to be displayed when program stops
+whatis -- Print data type of expression EXP
+x -- Examine memory: x/FMT ADDRESS
+
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+
+(gdb) help data
+Examining data.
+
+List of commands:
+
+append -- Append target code/data to a local file
+append binary -- Append target code/data to a raw binary file
+append binary memory -- Append contents of memory to a raw binary file
+append binary value -- Append the value of an expression to a raw binary file
+append memory -- Append contents of memory to a raw binary file
+append value -- Append the value of an expression to a raw binary file
+call -- Call a function in the program
+disassemble -- Disassemble a specified section of memory
+display -- Print value of expression EXP each time the program stops
+dump -- Dump target code/data to a local file
+dump binary -- Write target code/data to a raw binary file
+dump binary memory -- Write contents of memory to a raw binary file
+dump binary value -- Write the value of an expression to a raw binary file
+dump ihex -- Write target code/data to an intel hex file
+dump ihex memory -- Write contents of memory to an ihex file
+dump ihex value -- Write the value of an expression to an ihex file
+dump memory -- Write contents of memory to a raw binary file
+dump srec -- Write target code/data to an srec file
+dump srec memory -- Write contents of memory to an srec file
+dump srec value -- Write the value of an expression to an srec file
+dump tekhex -- Write target code/data to a tekhex file
+dump tekhex memory -- Write contents of memory to a tekhex file
+dump tekhex value -- Write the value of an expression to a tekhex file
+dump value -- Write the value of an expression to a raw binary file
+init-if-undefined -- Initialize a convenience variable if necessary
+inspect -- Same as "print" command
+mem -- Define attributes for memory region or reset memory region handling to
+output -- Like "print" but don't put in value history and don't print newline
+print -- Print value of expression EXP
+print-object -- Ask an Objective-C object to print itself
+printf -- Printf "printf format string"
+ptype -- Print definition of type TYPE
+restore -- Restore the contents of FILE to target memory
+set -- Evaluate expression EXP and assign result to variable VAR
+set annotate -- Set annotation_level
+set architecture -- Set architecture of target
+set args -- Set argument list to give program being debugged when it is started
+set auto-solib-add -- Set autoloading of shared library symbols
+set backtrace -- Set backtrace specific variables
+set backtrace limit -- Set an upper bound on the number of backtrace levels
+set backtrace past-entry -- Set whether backtraces should continue past the entry point of a program
+set backtrace past-main -- Set whether backtraces should continue past "main"
+set breakpoint -- Breakpoint specific settings
+set breakpoint auto-hw -- Set automatic usage of hardware breakpoints
+set breakpoint pending -- Set debugger's behavior regarding pending breakpoints
+set can-use-hw-watchpoints -- Set debugger's willingness to use watchpoint hardware
+set case-sensitive -- Set case sensitivity in name search
+set charset -- Set the host and target character sets
+set check -- Set the status of the type/range checker
+set check range -- Set range checking
+set check type -- Set type checking
+set coerce-float-to-double -- Set coercion of floats to doubles when calling functions
+set complaints -- Set max number of complaints about incorrect symbols
+set confirm -- Set whether to confirm potentially dangerous operations
+set cp-abi -- Set the ABI used for inspecting C++ objects
+set debug -- Generic command for setting gdb debugging flags
+set debug arch -- Set architecture debugging
+set debug event -- Set event debugging
+set debug expression -- Set expression debugging
+set debug frame -- Set frame debugging
+set debug infrun -- Set inferior debugging
+set debug lin-lwp -- Set debugging of GNU/Linux lwp module
+set debug observer -- Set observer debugging
+set debug overload -- Set debugging of C++ overloading
+set debug remote -- Set debugging of remote protocol
+set debug serial -- Set serial debugging
+set debug target -- Set target debugging
+set debug xml -- Set XML parser debugging
+set debug-file-directory -- Set the directory where separate debug symbols are searched for
+set debugvarobj -- Set varobj debugging
+set demangle-style -- Set the current C++ demangling style
+set detach-on-fork -- Set whether gdb will detach the child of a fork
+set disassembly-flavor -- Set the disassembly flavor
+set editing -- Set editing of command lines as they are typed
+set endian -- Set endianness of target
+set environment -- Set environment variable value to give the program
+set exec-done-display -- Set notification of completion for asynchronous execution commands
+set extension-language -- Set mapping between filename extension and source language
+set follow-fork-mode -- Set debugger response to a program call of fork or vfork
+set gnutarget -- (Set the current BFD target
+set height -- Set number of lines gdb thinks are in a page
+set history -- Generic command for setting command history parameters
+set history expansion -- Set history expansion on command input
+set history filename -- Set the filename in which to record the command history
+set history save -- Set saving of the history record on exit
+set history size -- Set the size of the command history
+set host-charset -- Set the host character set
+set inferior-tty -- Set terminal for future runs of program being debugged
+set input-radix -- Set default input radix for entering numbers
+set language -- Set the current source language
+set listsize -- Set number of source lines gdb will list by default
+set logging -- Set logging options
+set logging file -- Set the current logfile
+set logging off -- Disable logging
+set logging on -- Enable logging
+set logging overwrite -- Set whether logging overwrites or appends to the log file
+set logging redirect -- Set the logging output mode
+set max-user-call-depth -- Set the max call depth for user-defined commands
+set mem -- Memory regions settings
+set mem inaccessible-by-default -- Set handling of unknown memory regions
+set opaque-type-resolution -- Set resolution of opaque struct/class/union types (if set before loading symbols)
+set osabi -- Set OS ABI of target
+set output-radix -- Set default output radix for printing of values
+set overload-resolution -- Set overload resolution in evaluating C++ functions
+set pagination -- Set state of pagination
+set print -- Generic command for setting how things print
+set print address -- Set printing of addresses
+set print array -- Set prettyprinting of arrays
+set print array-indexes -- Set printing of array indexes
+set print asm-demangle -- Set demangling of C++/ObjC names in disassembly listings
+set print demangle -- Set demangling of encoded C++/ObjC names when displaying symbols
+set print elements -- Set limit on string chars or array elements to print
+set print max-symbolic-offset -- Set the largest offset that will be printed in <symbol+1234> form
+set print null-stop -- Set printing of char arrays to stop at first null char
+set print object -- Set printing of object's derived type based on vtable info
+set print pascal_static-members -- Set printing of pascal static members
+set print pretty -- Set prettyprinting of structures
+set print repeats -- Set threshold for repeated print elements
+set print sevenbit-strings -- Set printing of 8-bit characters in strings as \nnn
+set print static-members -- Set printing of C++ static members
+set print symbol-filename -- Set printing of source filename and line number with <symbol>
+set print union -- Set printing of unions interior to structures
+set print vtbl -- Set printing of C++ virtual function tables
+set prompt -- Set gdb's prompt
+set radix -- Set default input and output number radices
+set remote -- Remote protocol specific variables
+set remote P-packet -- Set use of remote protocol `P' (set-register) packet
+set remote X-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote Z-packet -- Set use of remote protocol `Z' packets
+set remote access-watchpoint-packet -- Set use of remote protocol `Z4' (access-watchpoint) packet
+set remote binary-download-packet -- Set use of remote protocol `X' (binary-download) packet
+set remote fetch-register-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote get-thread-local-storage-address-packet -- Set use of remote protocol `qGetTLSAddr' (get-thread-local-storage-address) packet
+set remote hardware-breakpoint-limit -- Set the maximum number of target hardware breakpoints
+set remote hardware-breakpoint-packet -- Set use of remote protocol `Z1' (hardware-breakpoint) packet
+set remote hardware-watchpoint-limit -- Set the maximum number of target hardware watchpoints
+set remote library-info-packet -- Set use of remote protocol `qXfer:libraries:read' (library-info) packet
+set remote memory-map-packet -- Set use of remote protocol `qXfer:memory-map:read' (memory-map) packet
+set remote memory-read-packet-size -- Set the maximum number of bytes per memory-read packet
+set remote memory-write-packet-size -- Set the maximum number of bytes per memory-write packet
+set remote p-packet -- Set use of remote protocol `p' (fetch-register) packet
+set remote pass-signals-packet -- Set use of remote protocol `QPassSignals' (pass-signals) packet
+set remote read-aux-vector-packet -- Set use of remote protocol `qXfer:auxv:read' (read-aux-vector) packet
+set remote read-spu-object-packet -- Set use of remote protocol `qXfer:spu:read' (read-spu-object) packet
+set remote read-watchpoint-packet -- Set use of remote protocol `Z3' (read-watchpoint) packet
+set remote set-register-packet -- Set use of remote protocol `P' (set-register) packet
+set remote software-breakpoint-packet -- Set use of remote protocol `Z0' (software-breakpoint) packet
+set remote supported-packets-packet -- Set use of remote protocol `qSupported' (supported-packets) packet
+set remote symbol-lookup-packet -- Set use of remote protocol `qSymbol' (symbol-lookup) packet
+set remote system-call-allowed -- Set if the host system(3) call is allowed for the target
+set remote target-features-packet -- Set use of remote protocol `qXfer:features:read' (target-features) packet
+set remote verbose-resume-packet -- Set use of remote protocol `vCont' (verbose-resume) packet
+set remote write-spu-object-packet -- Set use of remote protocol `qXfer:spu:write' (write-spu-object) packet
+set remote write-watchpoint-packet -- Set use of remote protocol `Z2' (write-watchpoint) packet
+set remoteaddresssize -- Set the maximum size of the address (in bits) in a memory packet
+set remotebaud -- Set baud rate for remote serial I/O
+set remotebreak -- Set whether to send break if interrupted
+set remotecache -- Set cache use for remote targets
+set remoteflow -- Set use of hardware flow control for remote serial I/O
+set remotelogbase -- Set numerical base for remote session logging
+set remotelogfile -- Set filename for remote session recording
+set remotetimeout -- Set timeout limit to wait for target to respond
+set remotewritesize -- Set the maximum number of bytes per memory write packet (deprecated)
+set scheduler-locking -- Set mode for locking scheduler during execution
+set serial -- Set default serial/parallel port configuration
+set solib-absolute-prefix -- Set an alternate system root
+set solib-search-path -- Set the search path for loading non-absolute shared library symbol files
+set step-mode -- Set mode of the step operation
+set stop-on-solib-events -- Set stopping for shared library events
+set struct-convention -- Set the convention for returning small structs
+set substitute-path -- Usage: set substitute-path FROM TO
+set symbol-reloading -- Set dynamic symbol table reloading multiple times in one run
+set sysroot -- Set an alternate system root
+set target-charset -- Set the target character set
+set tdesc -- Set target description specific variables
+set tdesc filename -- Set the file to read for an XML target description
+set trace-commands -- Set tracing of GDB CLI commands
+set trust-readonly-sections -- Set mode for reading from readonly sections
+set tui -- TUI configuration variables
+set tui active-border-mode -- Set the attribute mode to use for the active TUI window border
+set tui border-kind -- Set the kind of border for TUI windows
+set tui border-mode -- Set the attribute mode to use for the TUI window borders
+set unwindonsignal -- Set unwinding of stack if a signal is received while in a call dummy
+set variable -- Evaluate expression EXP and assign result to variable VAR
+set verbose -- Set verbosity
+set watchdog -- Set watchdog timer
+set width -- Set number of characters gdb thinks are in a line
+set write -- Set writing into executable and core files
+undisplay -- Cancel some expressions to be displayed when program stops
+whatis -- Print data type of expression EXP
+x -- Examine memory: x/FMT ADDRESS
+
+Type "help" followed by command name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Command name abbreviations are allowed if unambiguous.
+
+(gdb) help print
+Print value of expression EXP.
+Variables accessible are those of the lexical environment of the selected
+stack frame, plus all those whose scope is global or an entire file.
+
+$NUM gets previous value number NUM.  $ and $$ are the last two values.
+$$NUM refers to NUM'th value back from the last one.
+Names starting with $ refer to registers (with the values they would have
+if the program were to return to the stack frame now selected, restoring
+all registers saved by frames farther in) or else to debugger
+"convenience" variables (any such name not a known register).
+Use assignment expressions to give values to convenience variables.
+
+{TYPE}ADREXP refers to a datum of data type TYPE, located at address ADREXP.
+@ is a binary operator for treating consecutive data objects
+anywhere in memory as an array.  FOO@NUM gives an array whose first
+element is FOO, whose second element is stored in the space following
+where FOO is stored, etc.  FOO must be an expression whose value
+resides in memory.
+
+EXP may be preceded with /FMT, where FMT is a format letter
+but no count or size letter (see "x" command).
+
+(gdb) printf 6, "%d", i
+Error: Bad format string, missing '"'.
+
+(gdb) help printf
+printf "printf format string", arg1, arg2, arg3, ..., argn
+This is useful for formatted output in user-defined commands.
+
+(gdb) printf "%d", i
+-1208023120
+(gdb) printf "%x", i
+b7ff07b0
+(gdb) printf "%x", i
+b7ff07b0
+(gdb) printf "%x", 0x1 + 0xA
+b
+(gdb) printf "%t", 0x1 + 0xA
+Error: Unrecognized format specifier 't' in printf
+
+(gdb) x $eip
+0x80483d5 <main+17>:	00000000111110000100010111000111
+
+(gdb) x eip
+Error: No symbol "eip" in current context.
+
+(gdb) x $eip
+0x80483d5 <main+17>:	00000000111110000100010111000111
+
+(gdb) x $cs
+0x73:
+Error: Cannot access memory at address 0x73
+
+(gdb) x eflags
+Error: No symbol "eflags" in current context.
+
+(gdb) x $eflags
+0x286:
+Error: Cannot access memory at address 0x286
+
+(gdb) i r
+eax            0xbffff584	-1073744508
+ecx            0xbffff500	-1073744640
+edx            0x1	1
+ebx            0xb7fc9ff4	-1208180748
+esp            0xbffff4c0	0xbffff4c0
+ebp            0xbffff4e8	0xbffff4e8
+esi            0x8048410	134513680
+edi            0x8048310	134513424
+eip            0x80483d5	0x80483d5 <main+17>
+eflags         0x286	[ PF SF IF ]
+cs             0x73	115
+ss             0x7b	123
+ds             0x7b	123
+es             0x7b	123
+fs             0x0	0
+gs             0x33	51
+
+(gdb) i r
+eax            0xbffff584	-1073744508
+ecx            0xbffff500	-1073744640
+edx            0x1	1
+ebx            0xb7fc9ff4	-1208180748
+esp            0xbffff4c0	0xbffff4c0
+ebp            0xbffff4e8	0xbffff4e8
+esi            0x8048410	134513680
+edi            0x8048310	134513424
+eip            0x80483d5	0x80483d5 <main+17>
+eflags         0x286	[ PF SF IF ]
+cs             0x73	115
+ss             0x7b	123
+ds             0x7b	123
+es             0x7b	123
+fs             0x0	0
+gs             0x33	51
+
+(gdb) x/2x $eip
+0x80483d5 <main+17>:	0x00f845c7	0xeb000000
+
+(gdb) x/xb $eip
+0x80483d5 <main+17>:	0xc7
+
+(gdb) x/xh $eip
+0x80483d5 <main+17>:	0x45c7
+
+(gdb) x/xw $eip
+0x80483d5 <main+17>:	0x00f845c7
+
+(gdb) x/xg $eip
+0x80483d5 <main+17>:	0xeb00000000f845c7
+
+(gdb) x/tg
+0x80483dd <main+25>:	0000100000000100100001001100000000100100000001001100011100010000
+
+(gdb) x/ug
+0x80483e5 <main+33>:	17889850230333967080
+
+(gdb) x/ub
+0x80483ed <main+41>:	1
+
+(gdb) x/ux
+0x80483ee <main+42>:	0x83
+
+(gdb) x/ub
+0x80483ef <main+43>:	125
+
+(gdb) x/ub $eip
+0x80483d5 <main+17>:	199
+
+(gdb) x/tb $eip
+0x80483d5 <main+17>:	11000111
+
+(gdb) x/ub
+0x80483d6 <main+18>:	69
+
+(gdb) x/xb
+0x80483d7 <main+19>:	0xf8
+
+(gdb) x/ub
+0x80483d8 <main+20>:	0
+
+(gdb) x/tb
+0x80483d9 <main+21>:	00000000
+
+(gdb) x/ub $eip
+0x80483d5 <main+17>:	199
+
+(gdb) x/x $eip
+0x80483d5 <main+17>:	0xc7
+
+(gdb) x/t $eip
+0x80483d5 <main+17>:	11000111
+
+(gdb) x/u $eip
+0x80483d5 <main+17>:	199
+
+(gdb) x/x $eip
+0x80483d5 <main+17>:	0xc7
+
+(gdb) x/x4b $eip
+Error: Invalid number "4b".
+
+(gdb) x/x4b $eip
+Error: Invalid number "4b".
+
+(gdb) x/4b $eip
+0x80483d5 <main+17>:	0xc7	0x45	0xf8	0x00
+
+(gdb) x/x $eip
+0x80483d5 <main+17>:	0xc7
+
+(gdb) x/xh $eip
+0x80483d5 <main+17>:	0x45c7
+
+(gdb) x/w $eip
+0x80483d5 <main+17>:	0x00f845c7
+
+(gdb) x/wt $eip
+0x80483d5 <main+17>:	00000000111110000100010111000111
+
+(gdb) x/8xb $eip
+0x80483d5 <main+17>:	0xc7	0x45	0xf8	0x00	0x00	0x00	0x00	0xeb
+
+(gdb) x/8xh $eip
+0x80483d5 <main+17>:	0x45c7	0x00f8	0x0000	0xeb00	0xc710	0x2404	0x84c0	0x0804
+
+(gdb) x/8xh $eip
+0x80483d5 <main+17>:	0x45c7	0x00f8	0x0000	0xeb00	0xc710	0x2404	0x84c0	0x0804
+
+(gdb) x/8xw
+0x80483e5 <main+33>:	0xffff0ae8	0xf84583ff	0xf87d8301	0x83ea7e09
+0x80483f5 <main+49>:	0x5d5924c4	0xc3fc618d	0x55909090	0xc35de589
+
+(gdb) x/8xw $eip
+0x80483d5 <main+17>:	0x00f845c7	0xeb000000	0x2404c710	0x080484c0
+0x80483e5 <main+33>:	0xffff0ae8	0xf84583ff	0xf87d8301	0x83ea7e09
+
+(gdb) x/i $eip
+0x80483d5 <main+17>:	mov    DWORD PTR [ebp-0x8],0x0
+
+Breakpoint 6, main () at firstprog.c:6
+
+Breakpoint 8, main () at firstprog.c:6
+
+Breakpoint 12, main () at firstprog.c:6
+
+(gdb) x3i $eip
+Error: Undefined command: "x3i".  Try "help".
+
+(gdb) x/3i $eip
+0x80483d5 <main+17>:	mov    DWORD PTR [ebp-0x8],0x0
+0x80483dc <main+24>:	jmp    0x80483ee <main+42>
+0x80483de <main+26>:	mov    DWORD PTR [esp],0x80484c0
+
+(gdb) x/8b $eip
+0x80483d5 <main+17>:	0xc7	0x45	0xf8	0x00	0x00	0x00	0x00	0xeb
+
+(gdb) i r ebp
+ebp            0xbffff4e8	0xbffff4e8
+
+(gdb) x/4xb $ebp - 4
+0xbffff4e4:	0x00	0xf5	0xff	0xbf
+
+(gdb) x/4xb $ebp-8
+0xbffff4e0:	0xb0	0x07	0xff	0xb7
+
+(gdb) print $ebp
+$1 = (void *) 0xbffff4e8
+
+(gdb) x/4b $1
+0xbffff4e8:	0x58	0xf5	0xff	0xbf
+
+(gdb) print $ebp - 8
+$2 = (void *) 0xbffff4e0
+
+(gdb) x/xw $1
+0xbffff4e8:	0xbffff558
+
+(gdb) print $ebp
+$3 = (void *) 0xbffff4e8
+
+(gdb) print $ebp-8
+$4 = (void *) 0xbffff4e0
+
+(gdb) x/x $1
+0xbffff4e8:	0xbffff558
+
+(gdb) print $ebp-8
+$5 = (void *) 0xbffff4e0
+
+(gdb) x $1
+0xbffff4e8:	0xbffff558
+
+(gdb) x/x $ebp-8
+0xbffff4e0:	0x00000000
+
+(gdb) p $esp
+$6 = (void *) 0xbffff4c0
+
+(gdb) p $ebp
+$7 = (void *) 0xbffff4e8
+
+(gdb) print $7-$6
+$8 = 40
+
+(gdb) x/40b $esp
+0xbffff4c0:	0x29	0xc3	0xf8	0xb7	0xf4	0x9f	0x04	0x08
+0xbffff4c8:	0xd8	0xf4	0xff	0xbf	0xc0	0x82	0x04	0x08
+0xbffff4d0:	0xf4	0x9f	0xfc	0xb7	0xf4	0x9f	0x04	0x08
+0xbffff4d8:	0xf8	0xf4	0xff	0xbf	0x29	0x84	0x04	0x08
+0xbffff4e0:	0x00	0x00	0x00	0x00	0x00	0xf5	0xff	0xbf
+
+(gdb) p $eip
+$9 = (void (*)()) 0x80483de <main+26>
+
+(gdb) x/i $eip
+0x80483de <main+26>:	mov    DWORD PTR [esp],0x80484c0
+
+(gdb) x/10i $eip
+0x80483de <main+26>:	mov    DWORD PTR [esp],0x80484c0
+0x80483e5 <main+33>:	call   0x80482f4 <puts@plt>
+0x80483ea <main+38>:	add    DWORD PTR [ebp-0x8],0x1
+0x80483ee <main+42>:	cmp    DWORD PTR [ebp-0x8],0x9
+0x80483f2 <main+46>:	jle    0x80483de <main+26>
+0x80483f4 <main+48>:	add    esp,0x24
+0x80483f7 <main+51>:	pop    ecx
+0x80483f8 <main+52>:	pop    ebp
+0x80483f9 <main+53>:	lea    esp,[ecx-0x4]
+0x80483fc <main+56>:	ret
