@@ -16,3 +16,7 @@ function assemble() {
 function compile() {
   gcc -g $1.c -o $1.out 
 }
+
+function unsafe_compile() {
+  gcc -fno-stack-protector -g $1.c -o $1.out
+}
