@@ -6,7 +6,6 @@ void C( ) ;
 
 int main(int argc, char **argv)
 {
-  printf("hello world\n");
   A(1) ;
   return 0;
 }
