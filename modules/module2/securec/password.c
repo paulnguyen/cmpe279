@@ -20,4 +20,6 @@ int main(void) {
     puts("Access denied");
     exit(-1);
   }
+  puts( "Access approved" );
 }
+
