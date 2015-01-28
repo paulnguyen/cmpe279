@@ -14,9 +14,18 @@ function assemble() {
 }
 
 function compile() {
-  gcc -g $1.c -o $1.out 
+  gcc -ggdb -m32 $1.c -o $1.out 
 }
 
 function unsafe_compile() {
-  gcc -fno-stack-protector -g $1.c -o $1.out
+  gcc -fno-stack-protector -ggdb -m32 $1.c -o $1.out
 }
+
+function gdb_attach() {
+  gdb -tui -p $1
+}
+
+function run_hex() {
+  while read -r line; do echo -e $line; done | $1
+}
+
