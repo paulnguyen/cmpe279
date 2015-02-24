@@ -1,8 +1,0 @@
-INDEX VERSION 1.122+/home/user/CMPE279/eclipse/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1609959051.index
-4171700887.index
-1846339339.index
-2670894446.index
-2109488832.index
-3832875524.index
-1784306218.index
