@@ -1,0 +1,11 @@
+/* AUTOMATICALLY GENERATED ON Tue Feb 24 04:05:55 EST 2015*/
+/* DO NOT EDIT */
+
+grant codeBase "http://docs.oracle.com/javase/tutorial/security/tour1/examples" {
+};
+
+grant codeBase "file:/home/user/CMPE279/modules/module8/java" {
+  permission java.util.PropertyPermission "user.home", "read";
+  permission java.util.PropertyPermission "java.home", "read";
+};
+
