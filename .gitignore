@@ -1,5 +1,6 @@
 Servers
 .metadata
 .metadata/*
+.metadata/.plugins/*
 .log
 .lock
