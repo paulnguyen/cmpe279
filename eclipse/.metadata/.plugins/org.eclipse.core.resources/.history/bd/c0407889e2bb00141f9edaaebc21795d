@@ -3,7 +3,6 @@
     <wb-module deploy-name="LoginForm">
         <wb-resource deploy-path="/" source-path="/WebContent"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
         <property name="context-root" value="LoginForm"/>
         <property name="java-output-path" value="/LoginForm/build/classes"/>
     </wb-module>
