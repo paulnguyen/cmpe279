@@ -5,7 +5,7 @@
 Servers
 
 *target*
-*.jar
+#*.jar
 *.war
 *.ear
 *.class
