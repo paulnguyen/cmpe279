@@ -1,0 +1,4 @@
+
+http://localhost:8080/demoxss/xsstest.jsp?input=hello
+http://localhost:8080/demoxss/xsstest.jsp?input=<script>alert('XSS');</script>
+http://localhost:8080/demoxss/xsstest.jsp?input=%3Cscript%3Ealert(%27XSS%27);%3C/script%3E

