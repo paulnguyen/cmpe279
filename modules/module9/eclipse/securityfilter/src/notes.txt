@@ -1,10 +1,10 @@
 
 Unfiltered XSS Test:
 
-http://localhost:8080/securityfilter/hello?hack=<cript>alert('XSS');</script>
+http://localhost:8080/securityfilter/hello?hack=<script>alert('XSS');</script>
 http://localhost:8080/securityfilter/hello?hack=%3Cscript%3Ealert(%27XSS%27);%3C/script%3E
 
 Filtered XSS Test:
 
-http://localhost:8080/securityfilter/hellofiltered?hack=<cript>alert('XSS');</script>
+http://localhost:8080/securityfilter/hellofiltered?hack=<script>alert('XSS');</script>
 http://localhost:8080/securityfilter/hellofiltered?hack=%3Cscript%3Ealert(%27XSS%27);%3C/script%3E
