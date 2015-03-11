@@ -38,3 +38,7 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
+/netbeans/HelloWebApplication/nbproject/private/
+/netbeans/HelloEnterpriseApplication/nbproject/private/
+/netbeans/HelloEnterpriseApplication/HelloEnterpriseApplication-war/nbproject/private/
+/netbeans/HelloEnterpriseApplication/HelloEnterpriseApplication-ejb/nbproject/private/

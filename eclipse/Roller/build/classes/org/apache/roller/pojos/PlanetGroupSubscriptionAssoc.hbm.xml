@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.PlanetGroupSubscriptionAssoc"
+        table="rag_group_subscription"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PlanetGroupSubscriptionAssoc.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="group"
+            class="org.apache.roller.pojos.PlanetGroupData"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="group_id"
+            not-null="false"
+        />
+
+        <many-to-one
+            name="subscription"
+            class="org.apache.roller.pojos.PlanetSubscriptionData"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="subscription_id"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PlanetGroupSubscriptionAssoc.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

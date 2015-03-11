@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.FolderAssoc"
+        table="folderassoc"
+        lazy="false"
+    >
+        <cache usage="read-write" />
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-FolderAssoc.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="ancestorFolder"
+            class="org.apache.roller.pojos.FolderData"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="ancestorid"
+        />
+
+        <many-to-one
+            name="folder"
+            class="org.apache.roller.pojos.FolderData"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="folderid"
+            not-null="true"
+        />
+
+        <property
+            name="relation"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="relation"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-FolderAssoc.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

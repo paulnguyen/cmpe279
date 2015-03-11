@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.ObjectAuditData"
+        table="roller_audit_log"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-ObjectAuditData.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="changeTime"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="change_time"
+            unique="false"
+        />
+
+        <property
+            name="comment"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="comment_text"
+            unique="false"
+        />
+
+        <property
+            name="objectClass"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="object_class"
+            unique="false"
+        />
+
+        <property
+            name="objectId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="object_id"
+            unique="false"
+        />
+
+        <property
+            name="userId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="user_id"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-ObjectAuditData.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

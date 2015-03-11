@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.PlanetConfigData"
+        table="rag_config"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PlanetConfigData.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <many-to-one
+            name="defaultGroup"
+            class="org.apache.roller.pojos.PlanetGroupData"
+            cascade="all"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            column="default_group_id"
+            not-null="false"
+        />
+
+        <property
+            name="groupPage"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="group_page"
+            unique="false"
+        />
+
+        <property
+            name="mainPage"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="main_page"
+            unique="false"
+        />
+
+        <property
+            name="proxyHost"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="proxy_host"
+            unique="false"
+        />
+
+        <property
+            name="proxyPort"
+            type="int"
+            update="true"
+            insert="true"
+            column="proxy_port"
+            unique="false"
+        />
+
+        <property
+            name="siteURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="site_url"
+            unique="false"
+        />
+
+        <property
+            name="adminEmail"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="admin_email"
+            unique="false"
+        />
+
+        <property
+            name="adminName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="admin_name"
+            unique="false"
+        />
+
+        <property
+            name="outputDir"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="output_dir"
+            unique="false"
+        />
+
+        <property
+            name="templateDir"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="template_dir"
+            unique="false"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="description"
+            unique="false"
+        />
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="title"
+            unique="false"
+        />
+
+        <property
+            name="cacheDir"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cache_dir"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PlanetConfigData.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

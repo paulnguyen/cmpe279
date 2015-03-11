@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.PlanetGroupData"
+        table="rag_group"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PlanetGroupData.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <bag
+            name="groupSubscriptionAssocs"
+            lazy="false"
+            inverse="true"
+            cascade="delete"
+        >
+
+            <key
+                column="group_id"
+            >
+            </key>
+
+            <one-to-many
+                  class="org.apache.roller.pojos.PlanetGroupSubscriptionAssoc"
+            />
+
+      </bag>
+
+        <property
+            name="categoryRestriction"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="cat_restriction"
+            unique="false"
+        />
+
+        <property
+            name="description"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="description"
+            unique="false"
+        />
+
+        <property
+            name="handle"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="handle"
+            unique="false"
+        />
+
+        <property
+            name="maxFeedEntries"
+            type="int"
+            update="true"
+            insert="true"
+            column="max_feed_entries"
+            unique="false"
+        />
+
+        <property
+            name="maxPageEntries"
+            type="int"
+            update="true"
+            insert="true"
+            column="max_page_entries"
+            unique="false"
+        />
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="title"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PlanetGroupData.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

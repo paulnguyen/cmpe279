@@ -1,0 +1,17 @@
+<Context docBase="roller" path="/roller" reloadable="true" source="org.eclipse.jst.j2ee.server:roller">
+<Resource name="jdbc/rollerdb" auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" 
+url="jdbc:mysql://localhost:3306/roller?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;mysqlEncoding=utf8" 
+username="roller" 
+password="password" 
+maxActive="6" 
+maxIdle="3" 
+removeAbandoned="true" 
+maxWait="60" />
+
+<!-- If you want e-mail features, un-comment the section below -->
+<!--
+<Resource name="mail/Session" auth="Container" 
+type="javax.mail.Session" 
+mail.smtp.host="mailhost.example.com" />
+-->
+</Context>

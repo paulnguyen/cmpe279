@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.PlanetSubscriptionData"
+        table="rag_subscription"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-PlanetSubscriptionData.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <bag
+            name="groupSubscriptionAssocs"
+            lazy="true"
+            inverse="true"
+            cascade="delete"
+        >
+
+            <key
+                column="subscription_id"
+            >
+            </key>
+
+            <one-to-many
+                  class="org.apache.roller.pojos.PlanetGroupSubscriptionAssoc"
+            />
+
+      </bag>
+
+        <bag
+            name="entries"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+        >
+
+            <key
+                column="subscription_id"
+            >
+            </key>
+
+            <one-to-many
+                  class="org.apache.roller.pojos.PlanetEntryData"
+            />
+
+      </bag>
+
+        <property
+            name="feedURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="feed_url"
+            unique="false"
+        />
+
+        <property
+            name="lastUpdated"
+            type="java.util.Date"
+            update="true"
+            insert="true"
+            column="last_updated"
+            unique="false"
+        />
+
+        <property
+            name="siteURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="site_url"
+            unique="false"
+        />
+
+        <property
+            name="title"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="title"
+            unique="false"
+        />
+
+        <property
+            name="author"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="author"
+            unique="false"
+        />
+
+        <property
+            name="inboundlinks"
+            type="int"
+            update="true"
+            insert="true"
+            column="inbound_links"
+            unique="false"
+        />
+
+        <property
+            name="inboundblogs"
+            type="int"
+            update="true"
+            insert="true"
+            column="inbound_blogs"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-PlanetSubscriptionData.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

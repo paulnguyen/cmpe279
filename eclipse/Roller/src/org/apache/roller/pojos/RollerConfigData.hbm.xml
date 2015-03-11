@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="org.apache.roller.pojos.RollerConfigData"
+        table="rollerconfig"
+        lazy="false"
+    >
+
+        <id
+            name="id"
+            column="id"
+            type="java.lang.String"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-RollerConfigData.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="absoluteURL"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="absoluteurl"
+            unique="false"
+        />
+
+        <property
+            name="rssUseCache"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="rssusecache"
+            unique="false"
+        />
+
+        <property
+            name="rssCacheTime"
+            type="java.lang.Integer"
+            update="true"
+            insert="true"
+            column="rsscachetime"
+            unique="false"
+        />
+
+        <property
+            name="newUserAllowed"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="newuserallowed"
+            unique="false"
+        />
+
+        <property
+            name="userThemes"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="userthemes"
+            unique="false"
+        />
+
+        <property
+            name="editorPages"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="editorpages"
+            unique="false"
+        />
+
+        <property
+            name="enableAggregator"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="enableaggregator"
+            unique="false"
+        />
+
+        <property
+            name="uploadEnabled"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="uploadenabled"
+            unique="false"
+        />
+
+        <property
+            name="uploadMaxDirMB"
+            type="big_decimal"
+            update="true"
+            insert="true"
+            column="uploadmaxdirmb"
+            unique="false"
+        />
+
+        <property
+            name="uploadMaxFileMB"
+            type="big_decimal"
+            update="true"
+            insert="true"
+            column="uploadmaxfilemb"
+            unique="false"
+        />
+
+        <property
+            name="uploadAllow"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="uploadallow"
+            unique="false"
+        />
+
+        <property
+            name="uploadForbid"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="uploadforbid"
+            unique="false"
+        />
+
+        <property
+            name="uploadDir"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="uploaddir"
+            unique="false"
+        />
+
+        <property
+            name="uploadPath"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="uploadpath"
+            unique="false"
+        />
+
+        <property
+            name="memDebug"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="memdebug"
+            unique="false"
+        />
+
+        <property
+            name="autoformatComments"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="autoformatcomments"
+            unique="false"
+        />
+
+        <property
+            name="escapeCommentHtml"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="escapecommenthtml"
+            unique="false"
+        />
+
+        <property
+            name="emailComments"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="emailcomments"
+            unique="false"
+        />
+
+        <property
+            name="enableLinkback"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="enablelinkback"
+            unique="false"
+        />
+
+        <property
+            name="siteDescription"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="sitedescription"
+            unique="false"
+        />
+
+        <property
+            name="siteName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="sitename"
+            unique="false"
+        />
+
+        <property
+            name="emailAddress"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="emailaddress"
+            unique="false"
+        />
+
+        <property
+            name="indexDir"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="indexdir"
+            unique="false"
+        />
+
+        <property
+            name="encryptPasswords"
+            type="java.lang.Boolean"
+            update="true"
+            insert="true"
+            column="encryptpasswords"
+            unique="false"
+        />
+
+        <property
+            name="algorithm"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="algorithm"
+            unique="false"
+        />
+
+        <property
+            name="databaseVersion"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="dbversion"
+            unique="false"
+        />
+
+        <property
+            name="refererSpamWords"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            column="refspamwords"
+            unique="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-RollerConfigData.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>
